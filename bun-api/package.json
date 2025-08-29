@@ -4,12 +4,14 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "dotenv": "^17.2.1",
     "drizzle-orm": "^0.44.5",
     "hono": "^4.9.4",
     "pg": "^8.16.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/bun": "latest",
     "@types/pg": "^8.15.5",
     "drizzle-kit": "^0.31.4",
