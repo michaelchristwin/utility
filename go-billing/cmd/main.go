@@ -1,15 +1,19 @@
 package main
 
 import (
-	"billing-engine/db"
+	"log"
 	"net/http"
+
+	"billing-engine/internal/data"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	db.InitDB()
-	defer db.CloseDB()
+
+	if err := data.InitDB(); err != nil {
+		log.Fatalf("failed to initialize database: %v", err)
+	}
 
 	router := gin.Default()
 	router.GET("/ping", func(ctx *gin.Context) {

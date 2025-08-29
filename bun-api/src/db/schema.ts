@@ -29,9 +29,7 @@ export const usersRelations = relations(users, ({ many }) => ({
 
 export const meters = pgTable("meters", {
   id: uuid("id").primaryKey().defaultRandom(),
-  userId: uuid("user_id")
-    .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
+  userId: uuid("user_id").references(() => users.id, { onDelete: "set null" }),
   meterNumber: varchar("meter_number").unique().notNull(),
   type: varchar("type", { length: 20 }).notNull().$type<MeterType>(),
   installedAt: timestamp().defaultNow(),
